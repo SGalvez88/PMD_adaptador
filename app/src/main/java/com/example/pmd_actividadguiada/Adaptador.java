@@ -15,7 +15,7 @@ public class Adaptador extends ArrayAdapter<Datos> {
     private Datos [] datos;
 
     public Adaptador(Context context, Datos [] datos) {
-        super(context, R.layout.elemento);
+        super(context, R.layout.elemento,datos);
         this.datos = datos;
     }
 
