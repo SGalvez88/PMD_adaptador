@@ -3,7 +3,10 @@ package com.example.pmd_actividadguiada;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +28,17 @@ public class MainActivity extends AppCompatActivity {
         ListView listado = (ListView) findViewById(R.id.miLista);
         Adaptador miAdaptador = new Adaptador(this,datos);
         listado.setAdapter(miAdaptador);
+        View miCabecera = getLayoutInflater().inflate(R.layout.cabecera, null);
+        listado.addHeaderView(miCabecera);
+
+        listado.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adaptador, View view, int position, long l) {
+                String seleccionado = ((Datos) adaptador.getItemAtPosition(position)).getTexto1();
+                Toast.makeText(MainActivity.this,seleccionado,Toast.LENGTH_LONG).show();
+            }
+        });
+
 
     }
 }
